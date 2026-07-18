@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bio Link</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f 0%, #111119 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            color: #ffffff;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px 25px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 22px;
+            margin: 0 0 8px 0;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .bio {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin: 0 0 32px 0;
+            line-height: 1.5;
+        }
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .bio-link {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background 0.2s ease, transform 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .bio-link:active {
+            transform: scale(0.98);
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Chỗ thay ảnh đại diện -->
+        <img class="avatar" src="https://unsplash.com" alt="Avatar">
+        
+        <!-- Chỗ sửa tên và tiểu sử -->
+        <h1>Tên Của Bạn</h1>
+        <p class="bio">Sửa đoạn này thành lời giới thiệu ngắn về bạn để người khác đọc nhé ✨</p>
+        
+        <!-- Chỗ sửa link mạng xã hội -->
+        <div class="links-container">
+            <a href="https://facebook.com" target="_blank" class="bio-link">Facebook</a>
+            <a href="https://instagram.com" target="_blank" class="bio-link">Instagram</a>
+            <a href="https://tiktok.com" target="_blank" class="bio-link">TikTok</a>
+            <a href="mailto:your-email@gmail.com" class="bio-link">Gửi Email Liên Hệ</a>
+        </div>
+    </div>
+</body>
+</html>
