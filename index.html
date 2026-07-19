@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silk - Profile</title>
-    <!-- Google Fonts: Dùng Cinzel cho font Silk mảnh mai, thanh lịch và Montserrat cho phần text -->
+    <!-- Google Fonts: Hỗ trợ cả tiếng Trung thanh lịch và chữ Latin mảnh -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Noto+Serif+TC:wght@300;400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #161a12;       /* Màu nền rêu tối trung lập */
-            --panel-color: #1f241a;    /* Màu box panel bo góc */
-            --accent-gold: #dcca87;    /* Vàng kim mảnh, sang trọng */
-            --accent-teal: #7da392;    /* Xanh ngọc lục bảo dịu */
-            --text-main: #e2e8f0;      /* Trắng ngà nhẹ */
-            --text-sub: #8a9584;       /* Màu chữ phụ trầm */
+            --panel-color: rgba(31, 36, 26, 0.85); /* Box rêu tối, bo tròn bo góc có chút trong suốt nhìn xuyên nền */
+            --accent-gold: #dcca87;    
+            --accent-teal: #7da392;    
+            --text-main: #e2e8f0;      
+            --text-sub: #a2af9b;       
         }
 
         * {
@@ -26,9 +25,10 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: 'Montserrat', 'Noto Serif TC', sans-serif;
+            /* Chèn ảnh nền cành cây Trù Phú độ phân giải cao, cố định khi cuộn trang */
+            background: linear-gradient(rgba(10, 12, 8, 0.6), rgba(10, 12, 8, 0.6)), 
+                        url('https://fastcdn.hoyoverse.com/content-v2/h标记sr/109040/94dfb1f79cfef6722dca5d76d63e9f4a.jpg') center/cover no-repeat fixed;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -38,7 +38,7 @@
             position: relative;
         }
 
-        /* --- Hiệu ứng cánh hoa diên vĩ trắng rơi --- */
+        /* --- Hiệu ứng cánh hoa rơi --- */
         #flower-container {
             position: fixed;
             top: 0;
@@ -56,7 +56,7 @@
             opacity: 0.5;
             transform: rotate(45deg);
             animation: fall linear infinite;
-            filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
         }
 
         @keyframes fall {
@@ -66,25 +66,26 @@
             100% { transform: translateY(105vh) translateX(80px) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Khung Container Chính --- */
+        /* --- Khung Layout --- */
         .wrapper {
             width: 100%;
             max-width: 750px;
             z-index: 10;
         }
 
-        /* --- Khối Banner Phía Trên (Giống mẫu Carrd bạn gửi) --- */
+        /* --- Khối Banner Phía Trên --- */
         .profile-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('https://images.alphacoders.com/131/1318491.jpeg') center/cover; /* Thay link ảnh splash art Luocha của bạn ở đây */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.alphacoders.com/131/1318491.jpeg') center/cover; 
             border-radius: 24px;
             padding: 30px;
             display: flex;
             align-items: center;
             gap: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(3px);
         }
 
         .avatar-box {
@@ -94,6 +95,7 @@
             border: 2px solid #fff;
             overflow: hidden;
             flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         .avatar-box img {
@@ -103,21 +105,23 @@
         }
 
         .banner-text h1 {
-            font-family: 'Cinzel', serif;
+            font-family: 'Noto Serif TC', 'Cinzel', serif;
             font-weight: 400;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #ffffff;
         }
 
         .banner-text p {
-            font-size: 0.85rem;
-            color: #cbd5e1;
+            font-family: 'Noto Serif TC', sans-serif;
+            font-size: 0.95rem;
+            color: var(--accent-gold);
             font-weight: 300;
-            line-height: 1.4;
+            letter-spacing: 1px;
         }
 
-        /* --- Thanh Tabs Điều Hướng Mới --- */
+        /* --- Tabs --- */
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -125,32 +129,35 @@
         }
 
         .tab-btn {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-sub);
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: 30px;
             cursor: pointer;
             font-family: inherit;
             font-size: 0.85rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .tab-btn:hover, .tab-btn.active {
             color: var(--accent-gold);
             background-color: var(--panel-color);
             border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(220, 202, 135, 0.15);
         }
 
-        /* --- Khối Nội Dung Phía Dưới --- */
+        /* --- Khối Nội Dung --- */
         .content-card {
             background-color: var(--panel-color);
             border-radius: 24px;
             padding: 35px;
             min-height: 220px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
         }
 
         .tab-content {
@@ -167,10 +174,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Tên "Silk" dạng font chữ mảnh chuyển màu */
+        /* Tên Silk mảnh mai font Cinzel */
         .silk-title {
             font-family: 'Cinzel', serif;
-            font-weight: 300; /* Làm chữ mảnh hơn theo yêu cầu */
+            font-weight: 300; 
             font-size: 2.2rem;
             background: linear-gradient(135deg, var(--accent-teal) 20%, var(--accent-gold) 100%);
             -webkit-background-clip: text;
@@ -179,14 +186,26 @@
             letter-spacing: 2px;
         }
 
+        /* Tiêu đề DNI với Gradient Đỏ Crimson -> Đen huyền bí */
+        .dni-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #990000 15%, #2a0000 60%, #111111 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
         .bio-text {
             font-size: 0.95rem;
-            color: #b4c0ae;
+            color: #c2cbd4;
             line-height: 1.7;
             font-weight: 300;
         }
 
-        /* Định dạng danh sách cho mục About và DNI */
+        /* List thông tin sử dụng biểu tượng Hoa diên vĩ của Luocha */
         .info-list {
             list-style: none;
             margin-top: 10px;
@@ -196,40 +215,45 @@
             margin-bottom: 12px;
             font-size: 0.9rem;
             font-weight: 300;
-            color: #b4c0ae;
-            padding-left: 15px;
+            color: #cbd5e1;
+            padding-left: 22px;
             position: relative;
         }
 
+        /* Thay thế thành icon hoa diên vĩ trắng tinh tế */
         .info-list li::before {
-            content: '✦';
+            content: '❀';
             position: absolute;
             left: 0;
-            color: var(--accent-gold);
-            font-size: 0.75rem;
+            color: #ffffff;
+            font-size: 0.9rem;
+            filter: drop-shadow(0 0 2px var(--accent-gold));
+            top: -1px;
         }
 
+        /* Giữ icon hoa diên vĩ cho mục DNI nhưng làm dịu màu theo vibe trầm */
         .dni-list li::before {
-            content: '✕';
-            color: #f87171; /* Màu đỏ nhạt cho mục Do Not Interact */
+            content: '❀';
+            color: #990000;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
         }
     </style>
 </head>
 <body>
 
-    <!-- Hiệu ứng hoa rơi -->
+    <!-- Container hiệu ứng hoa rơi -->
     <div id="flower-container"></div>
 
     <div class="wrapper">
         <!-- BANNER PHÍA TRÊN -->
         <div class="profile-banner">
             <div class="avatar-box">
-                <!-- Thay link avatar của bạn vào đây -->
+                <!-- Thay link avatar thật của bạn vào đây -->
                 <img src="https://via.placeholder.com/150" alt="Avatar">
             </div>
             <div class="banner-text">
-                <h1>Rachael Deckard</h1>
-                <p>"Venenatis justo ultrices sagittis lectus tempus vis sed mus scelerisque magna etiam sed vestibulum."</p>
+                <h1>沈惊夜</h1>
+                <p>我命由我不由天</p>
             </div>
         </div>
 
@@ -237,13 +261,13 @@
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab(event, 'tab-home')">HOME</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-about')">ABOUT ME</button>
-            <button class="tab-btn" onclick="switchTab(event, 'tab-dni')">BYF / DNI</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-dni')">DNI</button>
         </div>
 
-        <!-- KHỐI NỘI DUNG CHÍNH (CHỈ 1 BOX DUY NHẤT) -->
+        <!-- KHỐI NỘI DUNG CHÍNH -->
         <div class="content-card">
             
-            <!-- 1. TAB HOME: CHỈ GỒM TÊN SILK MẢNH + 1 BOX BIO TEXT -->
+            <!-- 1. TAB HOME -->
             <div id="tab-home" class="tab-content active">
                 <div class="silk-title">Silk</div>
                 <p class="bio-text">
@@ -251,7 +275,7 @@
                 </p>
             </div>
 
-            <!-- 2. TAB ABOUT ME: GỢI Ý ĐỂ BẠN VIẾT THÊM VỀ BẢN THÂN -->
+            <!-- 2. TAB ABOUT ME (Dấu mục đã đổi thành hoa diên vĩ trắng ❀) -->
             <div id="tab-about" class="tab-content">
                 <div class="silk-title" style="font-size: 1.6rem;">About Me</div>
                 <ul class="info-list">
@@ -261,9 +285,9 @@
                 </ul>
             </div>
 
-            <!-- 3. TAB DNI: GỢI Ý MỤC DO NOT INTERACT -->
+            <!-- 3. TAB DNI (Tiêu đề chữ Gradient Crimson->Đen, Icon hoa rũ tối) -->
             <div id="tab-dni" class="tab-content">
-                <div class="silk-title" style="font-size: 1.6rem; background: linear-gradient(135deg, #f87171, var(--accent-gold)); -webkit-background-clip: text;">Do Not Interact</div>
+                <div class="dni-title">Do Not Interact</div>
                 <ul class="info-list dni-list">
                     <li>Đáp ứng các tiêu chuẩn DNI cơ bản của cộng đồng Art/Fandom.</li>
                     <li>Ăn cắp, tự ý sử dụng hoặc re-up tác phẩm/hình ảnh cá nhân khi chưa có sự cho phép.</li>
@@ -276,7 +300,6 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // Xử lý chuyển đổi Tab mượt mà
         function switchTab(evt, tabId) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
@@ -288,7 +311,6 @@
             evt.currentTarget.classList.add('active');
         }
 
-        // Tạo hiệu ứng cánh hoa diên vĩ trắng rơi
         function createFlower() {
             const container = document.getElementById('flower-container');
             if (!container) return;
@@ -296,12 +318,12 @@
             const flower = document.createElement('div');
             flower.classList.add('flower');
 
-            const size = Math.random() * 6 + 5; // hoa nhỏ mảnh hơn từ 5px - 11px
+            const size = Math.random() * 6 + 5; 
             flower.style.width = `${size}px`;
             flower.style.height = `${size}px`;
             flower.style.left = Math.random() * 100 + 'vw';
             
-            const duration = Math.random() * 4 + 6; // rơi chậm rãi, thong thả từ 6s - 10s
+            const duration = Math.random() * 4 + 6; 
             flower.style.animationDuration = `${duration}s`;
 
             container.appendChild(flower);
@@ -309,7 +331,7 @@
             setTimeout(() => { flower.remove(); }, duration * 1000);
         }
 
-        setInterval(createFlower, 400); // Khoảng cách ra hoa thưa hơn nhìn cho tinh tế
+        setInterval(createFlower, 400); 
     </script>
 </body>
 </html>
